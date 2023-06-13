@@ -19,7 +19,7 @@ while getopts :n:t:d:h opt; do
     esac
 done
 
-mkdir -p ros_pkgs
+mkdir -p ros-pkgs
 
 # pkg volume
 docker volume create --driver local \

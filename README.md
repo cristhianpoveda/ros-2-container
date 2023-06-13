@@ -18,6 +18,9 @@
     -t tag de la imagen a construir
     -n tag de la nueva imagen
 
+Nota: para trabajar en pc se recomienda la imagen ros:foxy-ros-base
+      para trabajar en jetson se recomienda la imagen dustynv/ros:foxy-ros-base-lt4-[VERISON-LT4]
+
 ## Crear y correr contenedor a partir de la imagen construida
 
 1) Correr el archivo run-container.sh
@@ -27,6 +30,15 @@
     * -n nombre de la imagen base
     * -t tag de la imagen base
     * -d ROS_DOMAIN_ID para el contenedor
+
+### Modificar paquetes de ROS 2 propios del contenedor
+
+1) todos los paquetes de ROS 2 creados dentro del workspace predefinido, se comparten dinámicamente con el host (máquina que corre el contenedor) en el directorio ros-pkgs. Se pueden modificar con cualquier IDE desde fuera del contenedor y el cambio se refleha inmediatamente en el contenedor.
+
+2) construir los paquetes modificados dentro del contenedor
+    $ colcon build [OPTIONS]
+
+Nota: al salir del contenedor este se elimina, pero los paquetes o cambios realizados se guardan en el directorio ros-pkgs y se cargan en cada nuevo contenedor creado con el script run-container.sh
 
 ## Configurar ROS_DOMAIN_ID
 
