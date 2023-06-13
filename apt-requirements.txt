@@ -1,2 +1,1 @@
-ros-foxy-rviz2
-ros-foxy-rqt*
+python3-pip
