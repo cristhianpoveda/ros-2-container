@@ -7,24 +7,24 @@
 2) listar las dependencias de python3 necesarias en el archivo py-requirements.txt
 
 3) Configurar la imagen base deseada en el archivo build-image.sh
-    $ bash build-image.sh -h
+    `bash build-image.sh -h`
     Muestra los argumentos de entrada necesarios para crear la imagen.
 
 4) Correr el archivo build-image.sh
-    $ bash build-image.sh [OPTIONS]
+    `bash build-image.sh [OPTIONS]`
 
     4.1) Los argumentos del archivo build-image.sh son:
     -i nombre de la imagen a construir
     -t tag de la imagen a construir
     -n tag de la nueva imagen
 
-Nota: para trabajar en pc se recomienda la imagen ros:foxy-ros-base
-      para trabajar en jetson se recomienda la imagen dustynv/ros:foxy-ros-base-lt4-[VERISON-LT4]
+Nota: para trabajar en pc se recomienda la imagen [ros:foxy-ros-base](https://hub.docker.com/_/ros/tags?page=1&name=foxy)
+      para trabajar en jetson se recomienda la imagen dustynv/[ros:foxy-ros-base-lt4-(VERISON-LT4)](https://hub.docker.com/r/dustynv/ros/tags?page=1&name=foxy)
 
 ## Crear y correr contenedor a partir de la imagen construida
 
 1) Correr el archivo run-container.sh
-    $ bash run-container.sh [OPTIONS]
+    `bash run-container.sh [OPTIONS]`
 
     1.1) Los argumentos del archivo run-container.sh son:
     * -n nombre de la imagen base
@@ -36,7 +36,7 @@ Nota: para trabajar en pc se recomienda la imagen ros:foxy-ros-base
 1) todos los paquetes de ROS 2 creados dentro del workspace predefinido, se comparten dinámicamente con el host (máquina que corre el contenedor) en el directorio ros-pkgs. Se pueden modificar con cualquier IDE desde fuera del contenedor y el cambio se refleha inmediatamente en el contenedor.
 
 2) construir los paquetes modificados dentro del contenedor
-    $ colcon build [OPTIONS]
+    `colcon build [OPTIONS]`
 
 Nota: al salir del contenedor este se elimina, pero los paquetes o cambios realizados se guardan en el directorio ros-pkgs y se cargan en cada nuevo contenedor creado con el script run-container.sh
 
@@ -76,7 +76,7 @@ https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.
     habilita todas las unidades GPU disponibles en la máquina.
 
 3) Validar el uso de la GPU dentro del contenedor con el comando:
-    $ nvidia-smi
+    `nvidia-smi`
     debe imprimir una tabla con las versiones de driver y la información de las GPU habilitadas.
 
 ## Acceso a dispositivos externos conectados por serial
