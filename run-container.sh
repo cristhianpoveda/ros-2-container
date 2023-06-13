@@ -5,28 +5,30 @@ function usage {
   printf " -n  image name\n"
   printf " -t  image tag\n"
   printf " -d  ROS_DOMAIN_ID value\n"
+  printf " -v  volume dir name\n"
   exit 0
 }
-while getopts :n:t:d:h opt; do
+while getopts :n:t:d:v:h opt; do
   case $opt in
     h) usage ;;
     n) NAME=${OPTARG};;
     t) TAG=${OPTARG};;
     d) ROS_DOMAIN_ID=${OPTARG};;
+    v) VOLUME=${OPTARG};;
     *) printf "run image: "$1" is not a valid option. \n"
        usage
       exit 1
     esac
 done
 
-mkdir -p ros-pkgs
+mkdir -p ${VOLUME}
 
 # pkg volume
 docker volume create --driver local \
     --opt type="none" \
-    --opt device="${PWD}/ros-pkgs/" \
+    --opt device="${PWD}/${VOLUME}/" \
     --opt o="bind" \
-    "${NAME}_src_vol"
+    "${VOLUME}_src_vol"
 
 xhost +
 docker run \
@@ -39,5 +41,7 @@ docker run \
     --privileged \
     -it \
     --rm \
-    --volume="${NAME}_src_vol:/home/ros/ros_ws/src/:rw" \
+    --volume="${VOLUME}_src_vol:/home/bicar/ros_ws/src/:rw" \
     "${NAME}:${TAG}"
+
+exit 0

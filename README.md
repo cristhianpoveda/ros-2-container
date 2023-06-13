@@ -27,18 +27,25 @@ Nota: para trabajar en pc se recomienda la imagen [ros:foxy-ros-base](https://hu
     `bash run-container.sh [OPTIONS]`
 
     1.1) Los argumentos del archivo run-container.sh son:
-    * -n nombre de la imagen base
-    * -t tag de la imagen base
+    * -n Nombre de la imagen base
+    * -t Tag de la imagen base
     * -d ROS_DOMAIN_ID para el contenedor
+    * -v Nombre del directorio para almacenar 
 
 ### Modificar paquetes de ROS 2 propios del contenedor
 
-1) todos los paquetes de ROS 2 creados dentro del workspace predefinido, se comparten dinámicamente con el host (máquina que corre el contenedor) en el directorio ros-pkgs. Se pueden modificar con cualquier IDE desde fuera del contenedor y el cambio se refleha inmediatamente en el contenedor.
+1) todos los paquetes de ROS 2 creados dentro del workspace predefinido, se comparten dinámicamente con el host (máquina que corre el contenedor) en el directorio definido por -v. Se pueden modificar con cualquier IDE desde fuera del contenedor, y el cambio se refleja inmediatamente dentro del contenedor.
 
 2) construir los paquetes modificados dentro del contenedor
     `colcon build [OPTIONS]`
 
 Nota: al salir del contenedor este se elimina, pero los paquetes o cambios realizados se guardan en el directorio ros-pkgs y se cargan en cada nuevo contenedor creado con el script run-container.sh
+
+### Crear multiples contenedores con paquetes diferentes
+
+1) Asignar un directorio diferente a cada uno de los contenedores al correr el archivo run-container.sh (-v DIRECTORIO).
+
+Nota: Si los contenedores comparten dependecias y se pueden usar a partir de la misma imagen construida realizar el paso 1), de lo contrario se recomienda construir otra imagen en otro repositorio y crear el nuevo contenedor desde ahí con sus dependencias ya instaladas.
 
 ## Configurar ROS_DOMAIN_ID
 
