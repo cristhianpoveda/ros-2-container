@@ -44,9 +44,7 @@ Nota: al salir del contenedor este se elimina, pero los paquetes o cambios reali
 
 ### Crear multiples contenedores con paquetes diferentes
 
-1) Asignar un directorio diferente a cada uno de los contenedores al correr el archivo run-container.sh (-v DIRECTORIO).
-
-Nota: Si los contenedores comparten dependecias y se pueden usar a partir de la misma imagen construida realizar el paso 1), de lo contrario se recomienda construir otra imagen en otro repositorio y crear el nuevo contenedor desde ahí con sus dependencias ya instaladas.
+1) Duplicar el repositorio y repetir el proceso
 
 ## Configurar ROS_DOMAIN_ID
 
