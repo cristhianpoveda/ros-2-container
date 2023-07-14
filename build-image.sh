@@ -14,7 +14,7 @@ while getopts :i:t:n:h opt; do
     h) usage ;;
     i) BASE_IMAGE=${OPTARG};;
     t) BASE_TAG=${OPTARG};;
-    n) TAG==${OPTARG};;
+    n) TAG=${OPTARG};;
     r) REBUILD=1 ;;
     *) printf "build image: "$1" is not a valid option. \n"
        usage
