@@ -14,8 +14,9 @@
     `bash build-image.sh [OPTIONS]`
 
     4.1) Los argumentos del archivo build-image.sh son:
-    -i nombre de la imagen a construir
-    -t tag de la imagen a construir
+   
+    -i nombre de la imagen base
+    -t tag de la imagen base
     -n tag de la nueva imagen
 
 Nota: para trabajar en pc se recomienda la imagen [ros:foxy-ros-base](https://hub.docker.com/_/ros/tags?page=1&name=foxy)
